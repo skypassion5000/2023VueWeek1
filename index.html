@@ -56,7 +56,7 @@
                   <span v-else>未啟用</span>
                 </td>
                 <td width="120">
-                  <button type="button" class="btn btn-primary" @click="temp = item">查看細節</button>
+                  <button type="button" class="btn btn-primary" @click="tempProduct = item">查看細節</button>
                 </td>
               </tr>
             </tbody>
@@ -65,24 +65,24 @@
         </div>
         <div class="col-md-6">
           <h2>單一產品細節</h2>
-          <template v-if="temp.title">
+          <template v-if="tempProduct.title">
             <div class="card mb-3">
-              <img :src="temp.imageUrl" class="card-img-top primary-image" alt="主圖">
+              <img :src="tempProduct.imageUrl" class="card-img-top primary-image" alt="主圖">
               <div class="card-body">
                 <h5 class="card-title">
-                  {{ temp.title }}
-                  <span class="badge bg-primary ms-2">{{ temp.category }}</span>
+                  {{ tempProduct.title }}
+                  <span class="badge bg-primary ms-2">{{ tempProduct.category }}</span>
                 </h5>
-                <p class="card-text">商品描述：{{ temp.description }}</p>
-                <p class="card-text">商品內容：{{ temp.content }}</p>
+                <p class="card-text">商品描述：{{ tempProduct.description }}</p>
+                <p class="card-text">商品內容：{{ tempProduct.content }}</p>
                 <div class="d-flex">
-                  <p class="card-text me-2">{{ temp.price }}</p>
-                  <p class="card-text text-secondary"><del>{{ temp.origin_price }}</del></p>
-                  元 / {{ temp.unit }}
+                  <p class="card-text me-2">{{ tempProduct.price }}</p>
+                  <p class="card-text text-secondary"><del>{{ tempProduct.origin_price }}</del></p>
+                  元 / {{ tempProduct.unit }}
                 </div>
               </div>
             </div>
-            <template v-for="(image, id) in temp.imagesUrl" :key="id">
+            <template v-for="(image, id) in tempProduct.imagesUrl" :key="id">
               <img v-if="image" :src="image" alt="" class="images m-2">
             </template>
           </template>
@@ -151,7 +151,7 @@
       data(){
         return {
           products,
-          temp:{},
+          tempProduct:{},
         }
       },
     }).mount('#app')
